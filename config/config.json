@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/holaMundo/HolaMundoWebPart.manifest.json"
         }
       ]
+    },
+    "prueba-property-pane-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pruebaPropertyPane/PruebaPropertyPaneWebPart.js",
+          "manifest": "./src/webparts/pruebaPropertyPane/PruebaPropertyPaneWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "HolaMundoWebPartStrings": "lib/webparts/holaMundo/loc/{locale}.js"
+    "HolaMundoWebPartStrings": "lib/webparts/holaMundo/loc/{locale}.js",
+    "PruebaPropertyPaneWebPartStrings": "lib/webparts/pruebaPropertyPane/loc/{locale}.js"
   }
 }
