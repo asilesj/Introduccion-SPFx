@@ -3,7 +3,7 @@
   "solution": {
     "name": "introduccion-spfx-client-side-solution",
     "id": "81054fe1-24e6-4788-ab91-fc23ebfd4beb",
-    "version": "1.0.0.0",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
