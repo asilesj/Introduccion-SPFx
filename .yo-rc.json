@@ -8,7 +8,7 @@
       "@microsoft/teams-js": "2.9.1"
     },
     "version": "1.17.1",
-    "libraryName": "hola-mundo",
+    "libraryName": "introduccion-spfx",
     "libraryId": "81054fe1-24e6-4788-ab91-fc23ebfd4beb",
     "environment": "spo",
     "packageManager": "npm",

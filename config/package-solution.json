@@ -35,6 +35,6 @@
     ]
   },
   "paths": {
-    "zippedPackage": "solution/hola-mundo.sppkg"
+    "zippedPackage": "solution/introduccion-spfx.sppkg"
   }
 }
