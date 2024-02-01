@@ -5,7 +5,7 @@
       "name": "Hosted workbench",
       "type": "edge",
       "request": "launch",
-      "url": "https://{tenantDomain}/_layouts/workbench.aspx",
+      "url": "https://indrasistemassa.sharepoint.com/sites/Learning2/_layouts/workbench.aspx",
       "webRoot": "${workspaceRoot}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {

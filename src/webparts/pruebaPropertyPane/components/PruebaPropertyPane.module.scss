@@ -1,34 +1,32 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
 .pruebaPropertyPane {
-  overflow: hidden;
-  padding: 1em;
-  color: "[theme:bodyText, default: #323130]";
-  color: var(--bodyText);
-  &.teams {
-    font-family: $ms-font-family-fallbacks;
-  }
-}
+  display: flex;
+  justify-content: center;
 
-.welcome {
-  text-align: center;
-}
+  .button {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
 
-.welcomeImage {
-  width: 100%;
-  max-width: 420px;
-}
+    &Dark {
+      background-color: black;
 
-.links {
-  a {
-    text-decoration: none;
-    color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+      & > a {
+        text-decoration: none;
+        color: white;
+      }
+    }
 
-    &:hover {
-      text-decoration: underline;
-      color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    &Light {
+      background-color: white;
+
+      & > a {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
 }

@@ -62,10 +62,10 @@ export default class PruebaPropertyPaneWebPart extends BaseClientSideWebPart<IPr
                   value: this.properties.url,
                 }),
                 PropertyPaneSlider("posicion", {
-                  label: "Posición del botón del primer banner",
+                  label: "Posición del botón",
                   value: this.properties.posicion,
-                  min: 0,
-                  max: 100,
+                  min: -45,
+                  max: 45,
                   step: 1,
                   showValue: false,
                 }),
