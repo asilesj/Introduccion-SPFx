@@ -46,8 +46,6 @@ export default class PruebaPnP extends React.Component<IPruebaPnPProps, IPruebaP
     if (listName) {
       const elements: ListElement[] = await getItems(listName , 'Title', '', '');
 
-      console.log(elements);
-
       if (elements)
         this.setState({ elements });
     }
