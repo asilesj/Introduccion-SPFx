@@ -1,43 +1,55 @@
 import * as React from 'react';
 import styles from './PruebaPnP.module.scss';
 import { IPruebaPnPProps } from './IPruebaPnPProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { IPruebaPnPState } from './IPruebaPnPState';
+import { getItems } from '../../../services/services';
+import { ListElement } from '../../../types/ListElement';
 
-export default class PruebaPnP extends React.Component<IPruebaPnPProps, {}> {
+export default class PruebaPnP extends React.Component<IPruebaPnPProps, IPruebaPnPState> {
+  constructor(props: IPruebaPnPProps, state: IPruebaPnPState) {
+    super(props);
+
+    this.state = {
+      elements: []
+    };
+  }
+
   public render(): React.ReactElement<IPruebaPnPProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+    const { listName } = this.props;
+    const { elements } = this.state;
 
     return (
-      <section className={`${styles.pruebaPnP} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
+      <>
+        <div onClick={async () => await this.getElementsFromList()} className={styles.button}>
+          {listName ? `Haz click aquí para traer los elementos de la lista "${listName}"` 
+          : '¡Tienes que especificar un valor para "listName" en las propiedades del webpart!'}
         </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
+
+        {
+          elements ?
+            <ul>
+            {
+              elements.map((element: ListElement, index: number) => {
+                return <li key={index}>{element.Title}</li>
+              })
+            }
+            </ul>
+          : null
+        }
+      </>
     );
   }
+
+  public async getElementsFromList(): Promise<void> {
+    const { listName } = this.props;
+
+    if (listName) {
+      const elements: ListElement[] = await getItems(listName , 'Title', '', '');
+
+      console.log(elements);
+
+      if (elements)
+        this.setState({ elements });
+    }
+  } 
 }
