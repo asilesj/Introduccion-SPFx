@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/pruebaPropertyPane/PruebaPropertyPaneWebPart.manifest.json"
         }
       ]
+    },
+    "prueba-pn-p-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pruebaPnP/PruebaPnPWebPart.js",
+          "manifest": "./src/webparts/pruebaPnP/PruebaPnPWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HolaMundoWebPartStrings": "lib/webparts/holaMundo/loc/{locale}.js",
-    "PruebaPropertyPaneWebPartStrings": "lib/webparts/pruebaPropertyPane/loc/{locale}.js"
+    "PruebaPropertyPaneWebPartStrings": "lib/webparts/pruebaPropertyPane/loc/{locale}.js",
+    "PruebaPnPWebPartStrings": "lib/webparts/pruebaPnP/loc/{locale}.js"
   }
 }
